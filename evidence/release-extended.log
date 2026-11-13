@@ -1,0 +1,19 @@
+--------- beginning of main
+346110 STOP_REQUEST
+346615 STORY_STOP
+346734 STORY_START mode=TEST_INPUT start=45 narrator=''
+346977 SCENES intro=11s/합성 음성 cloud=12s/합성 음성 tree=12s/합성 음성 stream=11s/합성 음성 end=11s/합성 음성 end_short=7s/합성 음성
+346984 AUDIO_FOCUS_REQUEST result=1
+347001 DECISION play=intro dur=11s remaining=0분 45초 source=TEST_INPUT reason=남은 45초: 필수 장면을 재생합니다.
+357617 SCENE_DONE intro
+358631 DECISION play=cloud dur=12s remaining=0분 34초 source=TEST_INPUT reason=남은 34초: 필수 장면을 재생합니다.
+361606 TEST_INPUT adjust=25 total=25
+370263 SCENE_DONE cloud
+371401 DECISION play=tree dur=12s remaining=0분 46초 source=TEST_INPUT reason=남은 46초: 시간이 넉넉해 추가 장면을 넣습니다.
+383380 SCENE_DONE tree
+384388 DECISION play=stream dur=11s remaining=0분 33초 source=TEST_INPUT reason=남은 33초: 시간이 넉넉해 추가 장면을 넣습니다.
+395430 SCENE_DONE stream
+396431 DECISION play=end dur=11s remaining=0분 21초 source=TEST_INPUT reason=남은 21초: 새 장면을 시작하지 않고 결말로 이어갑니다.
+406935 SCENE_DONE end
+407940 FINISHED remaining=0분 10초 reason=결말을 마쳤습니다. 다음 이야기를 자동으로 시작하지 않습니다.
+409506 STORY_STOP

@@ -1,0 +1,50 @@
+868418 STOP_REQUEST
+868448 STORY_STOP
+868746 STORY_START mode=REAL_NAVI narrator='synth'
+868777 NAVI initialize_returned
+869245 SCENES intro=11s/합성 음성 cloud=12s/합성 음성 tree=12s/합성 음성 stream=11s/합성 음성 end=11s/합성 음성 end_short=7s/합성 음성
+869257 AUDIO_FOCUS_REQUEST result=1
+870432 REAL_DESTINATION remainTimeRaw=240
+871759 DECISION play=intro dur=11s remaining=4분 0초 source=REAL_NAVI reason=남은 240초: 필수 장면을 재생합니다.
+872396 REAL_DESTINATION remainTimeRaw=240
+874397 REAL_DESTINATION remainTimeRaw=240
+876403 REAL_DESTINATION remainTimeRaw=240
+878418 REAL_DESTINATION remainTimeRaw=240
+880419 REAL_DESTINATION remainTimeRaw=240
+882173 SCENE_DONE intro
+882416 REAL_DESTINATION remainTimeRaw=240
+883175 DECISION play=cloud dur=12s remaining=4분 0초 source=REAL_NAVI reason=남은 240초: 필수 장면을 재생합니다.
+884428 REAL_DESTINATION remainTimeRaw=240
+886419 REAL_DESTINATION remainTimeRaw=240
+888424 REAL_DESTINATION remainTimeRaw=240
+890419 REAL_DESTINATION remainTimeRaw=240
+892428 REAL_DESTINATION remainTimeRaw=240
+894423 REAL_DESTINATION remainTimeRaw=240
+894810 SCENE_DONE cloud
+895811 DECISION play=tree dur=12s remaining=4분 0초 source=REAL_NAVI reason=남은 240초: 시간이 넉넉해 추가 장면을 넣습니다.
+896422 REAL_DESTINATION remainTimeRaw=240
+898446 REAL_DESTINATION remainTimeRaw=240
+900454 REAL_DESTINATION remainTimeRaw=240
+902507 REAL_DESTINATION remainTimeRaw=240
+904491 REAL_DESTINATION remainTimeRaw=240
+906497 REAL_DESTINATION remainTimeRaw=240
+907427 SCENE_DONE tree
+908428 DECISION play=stream dur=11s remaining=4분 0초 source=REAL_NAVI reason=남은 240초: 시간이 넉넉해 추가 장면을 넣습니다.
+908503 REAL_DESTINATION remainTimeRaw=240
+910497 REAL_DESTINATION remainTimeRaw=240
+912509 REAL_DESTINATION remainTimeRaw=240
+914501 REAL_DESTINATION remainTimeRaw=240
+916510 REAL_DESTINATION remainTimeRaw=240
+918509 REAL_DESTINATION remainTimeRaw=240
+919426 SCENE_DONE stream
+920428 DECISION play=end dur=11s remaining=4분 0초 source=REAL_NAVI reason=남은 240초: 새 장면을 시작하지 않고 결말로 이어갑니다.
+920523 REAL_DESTINATION remainTimeRaw=240
+922540 REAL_DESTINATION remainTimeRaw=240
+924510 REAL_DESTINATION remainTimeRaw=240
+926511 REAL_DESTINATION remainTimeRaw=240
+928515 REAL_DESTINATION remainTimeRaw=240
+930519 REAL_DESTINATION remainTimeRaw=240
+930866 SCENE_DONE end
+931870 FINISHED remaining=4분 0초 reason=결말을 마쳤습니다. 다음 이야기를 자동으로 시작하지 않습니다.
+932539 REAL_DESTINATION remainTimeRaw=240
+933482 STORY_STOP
