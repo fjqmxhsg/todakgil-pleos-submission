@@ -49,6 +49,17 @@ class StoryService : Service(), NaviHelperEventListener {
         const val STORY_TITLE = "아기 곰의 귀갓길"
 
         /** 진행자 폴더를 찾는 위치. 앱 내부 files/scenes 와 외부 files/scenes. */
+        /** 고를 수 있는 진행자: 앱에 내장한 폴더와 기기에 넣은 폴더. 가족 녹음을 합성 음성보다 앞에 둔다. */
+        fun narrators(context: android.content.Context): List<String> {
+            val bundled = try { context.assets.list("scenes")?.toList() ?: emptyList() } catch (_: Exception) { emptyList() }
+            val onDevice = sceneRoots(context).flatMap { it.listFiles()?.filter(File::isDirectory)?.map { d -> d.name } ?: emptyList() }
+            return (bundled + onDevice).distinct().sortedWith(compareBy({ it.startsWith("synth") }, { it != "mom" }, { it }))
+        }
+
+        /** 화면에 표시하는 음원 종류. 합성 음성을 가족 녹음으로 표기하지 않는다. */
+        fun narratorKind(context: android.content.Context, key: String) =
+            if (key.isEmpty() || key.startsWith("synth")) "합성 음성" else "가족 녹음"
+
         fun sceneRoots(context: android.content.Context): List<File> =
             listOfNotNull(File(context.filesDir, "scenes"), context.getExternalFilesDir("scenes"))
     }
@@ -155,13 +166,17 @@ class StoryService : Service(), NaviHelperEventListener {
         val dir = if (narrator.isNotEmpty()) sceneRoots(this).map { File(it, narrator) }.firstOrNull { it.isDirectory } else null
         for (s in script) {
             val f = dir?.let { d -> listOf("wav", "m4a", "mp3", "ogg").map { File(d, "${s.id}.$it") }.firstOrNull { it.isFile } }
-                ?: if (narrator.isEmpty() || narrator.startsWith("synth")) {
-                    try {
-                        val bundled = File(cacheDir, "bundled-${s.id}.wav")
-                        assets.open("scenes/synth/${s.id}.wav").use { input -> bundled.outputStream().use { input.copyTo(it) } }
-                        bundled
-                    } catch (_: Exception) { null }
-                } else null
+                ?: run {
+                    // 앱에 내장한 음원: assets/scenes/<진행자>/<장면>.<확장자>
+                    val folder = if (narrator.isEmpty()) "synth" else narrator
+                    listOf("wav", "m4a", "mp3", "ogg").firstNotNullOfOrNull { ext ->
+                        try {
+                            val bundled = File(cacheDir, "bundled-$folder-${s.id}.$ext")
+                            assets.open("scenes/$folder/${s.id}.$ext").use { input -> bundled.outputStream().use { input.copyTo(it) } }
+                            bundled
+                        } catch (_: Exception) { null }
+                    }
+                }
             // 폴더 이름이 synth로 시작하면 합성 음성으로 표시한다. 가족 녹음과 섞어 표기하지 않는다.
             if (f != null) { files[s.id] = f; kinds[s.id] = if (narrator.isEmpty() || narrator.startsWith("synth")) "합성 음성" else "가족 녹음" } else missing += s
         }

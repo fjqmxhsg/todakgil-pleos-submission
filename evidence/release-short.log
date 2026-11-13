@@ -1,14 +1,13 @@
---------- beginning of main
-258049 STOP_REQUEST
-258707 STORY_STOP
-258821 STORY_START mode=TEST_INPUT start=45 narrator=''
-259073 SCENES intro=11s/합성 음성 cloud=12s/합성 음성 tree=12s/합성 음성 stream=11s/합성 음성 end=11s/합성 음성 end_short=7s/합성 음성
-259079 AUDIO_FOCUS_REQUEST result=1
-259088 DECISION play=intro dur=11s remaining=0분 45초 source=TEST_INPUT reason=남은 45초: 필수 장면을 재생합니다.
-269826 SCENE_DONE intro
-270827 DECISION play=cloud dur=12s remaining=0분 34초 source=TEST_INPUT reason=남은 34초: 필수 장면을 재생합니다.
-282544 SCENE_DONE cloud
-283546 DECISION play=end dur=11s remaining=0분 21초 source=TEST_INPUT reason=남은 21초: 새 장면을 시작하지 않고 결말로 이어갑니다.
-294315 SCENE_DONE end
-295317 FINISHED remaining=0분 9초 reason=결말을 마쳤습니다. 다음 이야기를 자동으로 시작하지 않습니다.
-296869 STORY_STOP
+74268 STOP_REQUEST
+74448 STORY_STOP
+74693 STORY_START mode=TEST_INPUT start=45 narrator='synth'
+75627 SCENES intro=11s/합성 음성 cloud=12s/합성 음성 tree=12s/합성 음성 stream=11s/합성 음성 end=11s/합성 음성 end_short=7s/합성 음성
+75740 AUDIO_FOCUS_REQUEST result=1
+75836 DECISION play=intro dur=11s remaining=0분 45초 source=TEST_INPUT reason=남은 45초: 필수 장면을 재생합니다.
+87188 SCENE_DONE intro
+88189 DECISION play=cloud dur=12s remaining=0분 33초 source=TEST_INPUT reason=남은 33초: 필수 장면을 재생합니다.
+99730 SCENE_DONE cloud
+100737 DECISION play=end dur=11s remaining=0분 20초 source=TEST_INPUT reason=남은 20초: 새 장면을 시작하지 않고 결말로 이어갑니다.
+111065 SCENE_DONE end
+112066 FINISHED remaining=0분 9초 reason=결말을 마쳤습니다. 다음 이야기를 자동으로 시작하지 않습니다.
+113626 STORY_STOP
